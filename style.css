@@ -83,3 +83,9 @@ form div button:hover{
 .no-acc-register button:hover{
     background-color: rgb(189, 189, 189);
 }
+
+.customa-modal{
+    /* display: none; */
+    background-color: black;
+    box-shadow: rgba(255, 255, 255, 0.8) 0 0 1000px 1000px;
+}

@@ -22,3 +22,64 @@ h1{
     text-align: center;
     margin-bottom: 50px;
 }
+
+.main-wrapper{
+    max-width: 650px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 50px;
+}
+
+h2{
+    margin-bottom: 15px;
+}
+
+form div{
+    padding-bottom: 15px;
+}
+
+form div label{
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+form div input{
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+form div button{
+    cursor: pointer;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s linear;
+}
+
+form div button:hover{
+    background-color: rgb(189, 189, 189);
+}
+
+.no-acc-register{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.no-acc-register button{
+    cursor: pointer;
+    padding: 5px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s linear; 
+    margin-top: 10px;
+}
+
+.no-acc-register button:hover{
+    background-color: rgb(189, 189, 189);
+}

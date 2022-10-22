@@ -45,8 +45,8 @@ class Validator {
 			}
 		}
 
-		if(fieldValue.length < elFields[fieldName].minlength || fieldValue.length > elFields[fieldName].maxlength) {
-			this.errors[fieldName].push(`Polje mora imati minimalno ${elFields[fieldName].minlength} i maksimalno ${elFields[fieldName].maxlength} karaktera`);
+		if(fieldValue.length < elFields[fieldName].minLength || fieldValue.length > elFields[fieldName].maxLength) {
+			this.errors[fieldName].push(`Polje mora imati minimalno ${elFields[fieldName].minLength} i maksimalno ${elFields[fieldName].maxLength} karaktera`);
 		}
 
 		if(elFields[fieldName].matching) {

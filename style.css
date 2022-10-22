@@ -51,6 +51,14 @@ form div input{
     padding: 0 10px;
 }
 
+form ul{
+    list-style: none;
+}
+
+form ul li{
+    color: red;
+}
+
 form div button{
     cursor: pointer;
     padding: 10px 30px;

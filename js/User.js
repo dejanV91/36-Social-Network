@@ -12,6 +12,18 @@ class User{
             password: this.password
         }
 
-        console.log(data);
+        data = JSON.stringify(data);
+
+        fetch(this.api_url + "/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: data
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Kreiraj korisnik");
+        })
     }
 }

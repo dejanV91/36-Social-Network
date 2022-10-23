@@ -44,9 +44,9 @@ document.querySelector("#registrationModal").addEventListener("submit", (e) => {
     if (validator.validationPassed()) {
        
         let user = new User();
-        user.username = document.querySelector("#user-name");        
-        user.email = document.querySelector("#email");        
-        user.password = document.querySelector("#password");        
+        user.username = document.querySelector("#user-name").value;        
+        user.email = document.querySelector("#email").value;        
+        user.password = document.querySelector("#password").value;        
         user.create()
         
     }else{

@@ -23,7 +23,7 @@ class User{
         })
         .then(response => response.json())
         .then(data => {
-            console.log("Kreiraj korisnik");
+            window.location.href = "hexa.html";
         })
     }
 }

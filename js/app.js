@@ -1,3 +1,10 @@
+let session = new Session();
+session = session.getSession();
+
+if (session !== "") {
+    window.location.href = "hexa.html"
+}
+
 document.querySelector("#registration").addEventListener("click", () => {
     document.querySelector(".custom-modal").style.display = "block";
 });

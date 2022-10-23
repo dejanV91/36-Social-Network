@@ -26,8 +26,13 @@ class User{
             let session = new Session();
             session.user_id = data.id;
             session.startSession();
-            
+
             window.location.href = "hexa.html";
         })
+    }
+
+    getSession(){
+        let name = "user_id=";
+        let ca = document.cookie.split(";");
     }
 }

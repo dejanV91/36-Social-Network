@@ -42,7 +42,13 @@ document.querySelector("#registrationModal").addEventListener("submit", (e) => {
     e.preventDefault();
 
     if (validator.validationPassed()) {
-        alert("ok")
+       
+        let user = new User();
+        user.username = document.querySelector("#user-name");        
+        user.email = document.querySelector("#email");        
+        user.password = document.querySelector("#password");        
+        user.create()
+        
     }else{
         alert("nije ok");
     }

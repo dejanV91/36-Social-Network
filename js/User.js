@@ -31,8 +31,4 @@ class User{
         })
     }
 
-    getSession(){
-        let name = "user_id=";
-        let ca = document.cookie.split(";");
-    }
 }

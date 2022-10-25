@@ -31,8 +31,14 @@ class User{
         })
     }
 
-    get(){
-        let api_url
+    get(user_id){
+        let api_url = this.api_url + "/users/" + user_id;
+
+        fetch(api_url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
     }
 
     login(){

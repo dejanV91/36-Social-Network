@@ -31,6 +31,10 @@ class User{
         })
     }
 
+    get(){
+        let api_url
+    }
+
     login(){
         fetch(this.api_url + "/users")
         .then(response => response.json())

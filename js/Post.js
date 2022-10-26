@@ -17,7 +17,7 @@ class Post{
 
         data = JSON.stringify(data);
 
-        let response = await fetch(this.api_url + "posts", {
+        let response = await fetch(this.api_url + "/posts", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"

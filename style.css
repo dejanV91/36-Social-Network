@@ -177,6 +177,11 @@ form div button:hover{
     font-size: 22px;
 }
 
+#allPostsWrapper .single-post .post-comments form {
+    height: 30px;
+    margin-top: 15px;
+}
+
 #allPostsWrapper .single-post .post-comments form input{
     width: 85%;
     padding: 0 10px;

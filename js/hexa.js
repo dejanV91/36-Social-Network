@@ -69,15 +69,30 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
         let current_user = new User();
         current_user = await current_user.get(session_id);
 
+        let delete_post_html = "";
+
+        if (session_id === post.user_id) {
+            delete_post_html = '<button class="remove-btn" onclick = "removeMyPost(this)">Remove</button>'
+        }
+
         document.querySelector("#allPostsWrapper").innerHTML = `<div class="single-post data-post-id=${post.id}">
                                                                     <div class="post-content">${post.content}</div>
-                                                                </div>
-                                                                
-                                                                <div class="post-comments">
-                                                                    <form>
-                                                                        <input placeholder="Write text..." type="text">
-                                                                        <button onclick="commentsPostSubmit(event)">Comment</button>
-                                                                    </form>
+
+                                                                    <div class="post-actions">
+                                                                        <p><b>Autor:</b>${current_user.username}</p>
+                                                                        <div>
+                                                                            <button onclick="likePost(this)" class="likePostJS like-btn"><span>${post.likes}</span></button>
+                                                                            <button class="comment-btn" onclick="commentPost(this)">Comments</button>
+                                                                            ${delete_post_html}
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="post-comments">
+                                                                        <form>
+                                                                            <input placeholder="Write text..." type="text">
+                                                                            <button onclick="commentsPostSubmit(event)">Comment</button>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                                 `;
     }
@@ -86,5 +101,9 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
 });
 
 const commentsPostSubmit = event => {
-    
+
+}
+
+const removeMyPost = el => {
+
 }

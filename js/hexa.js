@@ -69,6 +69,8 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
         let current_user = new User();
         current_user = await current_user.get(session_id);
 
+        let html = document.querySelector("#allPostsWrapper").innerHTML;
+
         let delete_post_html = "";
 
         if (session_id === post.user_id) {
@@ -94,7 +96,7 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
                                                                         </form>
                                                                     </div>
                                                                 </div>
-                                                                `;
+                                                                ` + html;
     }
 
     createPost();
@@ -105,15 +107,58 @@ async function getAllPosts() {
     all_post = await all_post.getAllPosts();
 
     all_post.forEach(post => {
-        let html = document.querySelector("#allPostsWrapper").innerHTML;
-        document.querySelector("#allPostsWrapper").innerHTML = `<div class="single-post">${post.content}</div>` + html;
+        async function getPostUser(){
+
+            let user = new User();
+            user = await user.get(post.user_id)
+
+            let html = document.querySelector("#allPostsWrapper").innerHTML;
+
+            let delete_post_html = "";
+
+            if (session_id === post.user_id) {
+                delete_post_html = `<button class="remove-btn" onclick="removeMyPost(this)">Remove</button>`
+            }
+
+            document.querySelector("#allPostsWrapper").innerHTML = `<div class="single-post data-post-id=${post.id}">
+                                                                        <div class="post-content">${post.content}</div>
+
+                                                                        <div class="post-actions">
+                                                                            <p><b>Autor:</b>${user.username}</p>
+                                                                            <div>
+                                                                                <button onclick="likePost(this)" class="likePostJS like-btn"><span>${post.likes}</span></button>
+                                                                                <button class="comment-btn" onclick="commentPost(this)">Comments</button>
+                                                                                ${delete_post_html}
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="post-comments">
+                                                                            <form>
+                                                                                <input placeholder="Write text..." type="text">
+                                                                                <button onclick="commentsPostSubmit(event)">Comment</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                    ` + html;
+        }
+
+        getPostUser();
+
     });
 }
 
 getAllPosts();
 
-const commentsPostSubmit = event => {
+const commentsPostSubmit = e => {
+    e.preventDefault(); 
 
+    let btn = e.target;
+    btn.setAttribute("disabled", true)
+
+    let main_post_el = btn.closest(".single-post");
+    let post_id = main_post_el.getAttribute("data-post_id");
+
+    let html = main_post_el.querySelector(".post-comments").innerHTML;
 }
 
 const removeMyPost = el => {
@@ -124,6 +169,9 @@ const likePost = el => {
 
 }
 
-const commentPost = el => {
+const commentPost = btn => {
+    let main_post_el = btn.closest(".single-post");
+    let post_id = main_post_el.getAttribute("data-post_id")
 
+    main_post_el.querySelector(".post-comments").style.display = "block";
 }

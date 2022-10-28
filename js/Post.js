@@ -27,4 +27,11 @@ class Post{
         data = await response.json();
         return data;
     }
+
+    async getAllPosts() {
+        let response = await fetch(this.api_url + "/posts");
+        let data = await response.json();
+        return data;
+    }
 }
+

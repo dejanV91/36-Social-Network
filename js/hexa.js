@@ -100,10 +100,23 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
     createPost();
 });
 
+async function getAllPosts() {
+    let all_post = new Post();
+    all_post = await all_post.getAllPosts();
+}
+
 const commentsPostSubmit = event => {
 
 }
 
 const removeMyPost = el => {
+
+}
+
+const likePost = el => {
+
+}
+
+const commentPost = el => {
 
 }

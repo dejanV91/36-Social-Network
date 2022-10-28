@@ -103,7 +103,14 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
 async function getAllPosts() {
     let all_post = new Post();
     all_post = await all_post.getAllPosts();
+
+    all_post.forEach(post => {
+        let html = document.querySelector("#allPostsWrapper").innerHTML;
+        document.querySelector("#allPostsWrapper").innerHTML = `<div class="single-post">${post.content}</div>` + html;
+    });
 }
+
+getAllPosts();
 
 const commentsPostSubmit = event => {
 

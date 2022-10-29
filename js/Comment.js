@@ -5,9 +5,6 @@ class Comment {
     api_url = "https://6334a608ea0de5318a06d722.mockapi.io";
 
     create() {
-        let session = new Session();
-        session_id = session.getSession();
-
         let data = {
             post_id: this.post_id,
             user_id: this.user_id,
@@ -24,7 +21,7 @@ class Comment {
             body: data  
         })
         .then (response => response.json())
-        .then (data => data)
+        .then (data => {alert("comment wrote")})
     }
 
     async get(post_id){

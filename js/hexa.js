@@ -118,7 +118,7 @@ async function getAllPosts() {
             let comments_html = "";
             if (comments.lenght > 0) {
                 comments.forEach(comment => {
-                    comments_html += `<div class="single-comments">${comment.content}</div>`
+                    comments_html += `<div class="single-comment">${comment.content}</div>`
                 });
             }
 

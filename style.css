@@ -223,3 +223,9 @@ form div button:hover{
 #allPostsWrapper .single-post .post-comments{
     display: none;
 }
+
+#allPostsWrapper .single-post .post-comments .single-comment {
+    border: 1px dotted green;
+    padding: 10px;
+    margin-top: 10px;
+}

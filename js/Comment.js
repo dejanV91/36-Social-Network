@@ -16,14 +16,31 @@ class Comment {
 
         data = JSON.stringify(data);
 
-        let response = fetch(this.api_url + "/comments", {
+        fetch(this.api_url + "/comments", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
             },
-            body: data
+            body: data  
+        })
+        .then (response => response.json())
+        .then (data => data)
+    }
+
+    async get(post_id){
+        let api_url = this.api_url + "/comments";
+
+        const response = await fetch(api_url);
+        const data = await response.json();
+        let post_comments = [];
+
+        let i = 0;
+        data.forEach(item => {
+            if (item.post_id === post_id) {
+                post_comments[i] = item;
+                i++;
+            }
         });
-        data = response.json();
-        return data;
+        return post_comments;
     }
 }

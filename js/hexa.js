@@ -77,7 +77,7 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
             delete_post_html = '<button class="remove-btn" onclick = "removeMyPost(this)">Remove</button>'
         }
 
-        document.querySelector("#allPostsWrapper").innerHTML = `<div class="single-post data-post-id=${post.id}">
+        document.querySelector("#allPostsWrapper").innerHTML = `<div class="single-post" data-post_id=${post.id}>
                                                                     <div class="post-content">${post.content}</div>
 
                                                                     <div class="post-actions">
@@ -112,6 +112,16 @@ async function getAllPosts() {
             let user = new User();
             user = await user.get(post.user_id)
 
+            let comments = new Comment();
+            comments = await comments.get(post.id);
+
+            let comments_html = "";
+            if (comments.lenght > 0) {
+                comments.forEach(comment => {
+                    comments_html += `<div class="single-comments">${comment.content}</div>`
+                });
+            }
+
             let html = document.querySelector("#allPostsWrapper").innerHTML;
 
             let delete_post_html = "";
@@ -120,7 +130,7 @@ async function getAllPosts() {
                 delete_post_html = `<button class="remove-btn" onclick="removeMyPost(this)">Remove</button>`
             }
 
-            document.querySelector("#allPostsWrapper").innerHTML = `<div class="single-post data-post-id=${post.id}">
+            document.querySelector("#allPostsWrapper").innerHTML = `<div class="single-post" data-post_id=${post.id}>
                                                                         <div class="post-content">${post.content}</div>
 
                                                                         <div class="post-actions">
@@ -137,6 +147,7 @@ async function getAllPosts() {
                                                                                 <input placeholder="Write text..." type="text">
                                                                                 <button onclick="commentsPostSubmit(event)">Comment</button>
                                                                             </form>
+                                                                            ${comments_html}
                                                                         </div>
                                                                     </div>
                                                                     ` + html;
@@ -163,6 +174,12 @@ const commentsPostSubmit = e => {
     main_post_el.querySelector("input").value = "";
 
     main_post_el.querySelector(".post-comments").innerHTML += `<div class="single-comment">${comment_value}</div>`;
+
+    let comment = new Comment();
+    comment.content = comment_value;
+    comment.user_id = session_id;
+    comment.post_id = post_id;
+    comment.create();
 }
 
 const removeMyPost = el => {

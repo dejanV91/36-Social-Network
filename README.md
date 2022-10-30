@@ -2,7 +2,7 @@
 
 Social Network with JavaScript<br>
 <br>
-Demo: **[Social Network](https://dejanv91.github.io/35-Validation-OOP/index.html)**
+Demo: **[Social Network](https://dejanv91.github.io/36-Social-Network/index.html)**
 
 ## Frameworks:
 * CSS: **Bootstrap**

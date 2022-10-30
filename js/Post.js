@@ -34,14 +34,13 @@ class Post{
         return data;
     }
 
-    like(likes) {
+    like(post_id, likes) {
         let data = {
-            likes: likes
+            likes: likes,
         };
-
         data = JSON.stringify(data);
         
-        fetch(this.api_url + "/posts/" + this.post_id, {
+        fetch(this.api_url + "/posts/" + post_id, {
             method: "PUT",
             headers: {
                 "Content-Type" : "application/json",  
@@ -49,7 +48,7 @@ class Post{
             body: data
         })
         .then(response => response.json())
-        .then(data => {console.log(data);})
+        .then(data => {alert("Post liked")})
     }
 
     delete(post_id) {

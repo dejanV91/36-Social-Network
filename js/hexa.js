@@ -199,8 +199,8 @@ const likePost = btn => {
     btn.querySelector("span").innerText = number_of_likes + 1;
     btn.setAttribute("disabled", true);
 
-    let likes = new Post();
-    likes.like(number_of_likes);
+    let post = new Post();
+    post.like(post_id, number_of_likes + 1);
 }
 
 const commentPost = btn => {

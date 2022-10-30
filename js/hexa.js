@@ -83,7 +83,7 @@ document.querySelector("#postForm").addEventListener("submit", (e) => {
                                                                     <div class="post-actions">
                                                                         <p><b>Autor:</b>${current_user.username}</p>
                                                                         <div>
-                                                                            <button onclick="likePost(this)" class="likePostJS like-btn"><span>${post.likes}</span></button>
+                                                                            <button onclick="likePost(this)" class="likePostJS like-btn"><span>${post.likes}</span> Likes</button>
                                                                             <button class="comment-btn" onclick="commentPost(this)">Comments</button>
                                                                             ${delete_post_html}
                                                                         </div>
@@ -136,7 +136,7 @@ async function getAllPosts() {
                                                                         <div class="post-actions">
                                                                             <p><b>Autor:</b>${user.username}</p>
                                                                             <div>
-                                                                                <button onclick="likePost(this)" class="likePostJS like-btn"><span>${post.likes}</span></button>
+                                                                                <button onclick="likePost(this)" class="likePostJS like-btn"><span>${post.likes}</span> Likes</button>
                                                                                 <button class="comment-btn" onclick="commentPost(this)">Comments</button>
                                                                                 ${delete_post_html}
                                                                             </div>
@@ -182,12 +182,25 @@ const commentsPostSubmit = e => {
     comment.create();
 }
 
-const removeMyPost = el => {
+const removeMyPost = btn => {
+    let post_id = btn.closest(".single-post").getAttribute("data-post_id");
 
+    btn.closest(".single-post").remove();
+
+    let post = new Post();
+    post.delete(post_id);
 }
 
-const likePost = el => {
+const likePost = btn => {
+    let main_post_el = btn.closest(".single-post");
+    let post_id = btn.closest(".single-post").getAttribute("data-post_id");
+    let number_of_likes = parseInt(btn.querySelector("span").innerText);
 
+    btn.querySelector("span").innerText = number_of_likes + 1;
+    btn.setAttribute("disabled", true);
+
+    let likes = new Post();
+    likes.like(number_of_likes);
 }
 
 const commentPost = btn => {
